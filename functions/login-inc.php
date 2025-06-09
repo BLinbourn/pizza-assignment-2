@@ -21,6 +21,6 @@ if (isset($_POST["submit"])) {
         exit();
     }
 
-    header("location: ../dashboard.php");
+    header("location: ../pages/dashboard.php");
     exit();
 }
