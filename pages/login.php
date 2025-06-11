@@ -6,7 +6,7 @@
     <title>Login</title>
 </head>
 <body>
-    <div>Log in here </div>
+    <h3>Log in here </h3>
     <form action="../functions/login-inc.php" method="post">
         <label>Username</label>
         <input type="text" id="username" name="username" placeholder="Username">
