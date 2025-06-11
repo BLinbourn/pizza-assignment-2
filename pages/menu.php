@@ -59,12 +59,14 @@
         <?php
             $menuItems = getAllMenuItems($conn);
             foreach ($menuItems as $menuItem) {
+                $price = number_format((float)$menuItem['price'], 2, '.', '');
+
                 echo "
                 <tr>
                     <td>{$menuItem['category']}</td>
                     <td>{$menuItem['title']}</td>
                     <td>{$menuItem['description']}</td>
-                    <td>{$menuItem['price']}</td>
+                    <td>{$price}</td>
                     <td>{$menuItem['specialCondition']}</td>
                 </tr>
                 ";

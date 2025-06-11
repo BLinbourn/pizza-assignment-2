@@ -1,3 +1,12 @@
+<?php
+    require_once 'functions/dbh-inc.php';
+    require_once 'functions/func-inc.php';
+
+    $menuItems = getAllMenuItems($conn);
+
+    $specialInfo = '';
+?>
+
 <!DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
@@ -59,63 +68,103 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
     </div>
 
     <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
-      <h1><b>Margherita</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$12.50</span></h1>
-      <p class="w3-text-grey">Fresh tomatoes, fresh mozzarella, fresh basil</p>
-      <hr>
-   
-      <h1><b>Formaggio</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$15.50</span></h1>
-      <p class="w3-text-grey">Four cheeses (mozzarella, parmesan, pecorino, jarlsberg)</p>
-      <hr>
-      
-      <h1><b>Chicken</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$17.00</span></h1>
-      <p class="w3-text-grey">Fresh tomatoes, mozzarella, chicken, onions</p>
-      <hr>
+      <?php
+        foreach ($menuItems as $menuItem) {
+          $price = number_format((float)$menuItem['price'], 2, '.', '');
 
-      <h1><b>Pineapple'o'clock</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$16.50</span></h1>
-      <p class="w3-text-grey">Fresh tomatoes, mozzarella, fresh pineapple, bacon, fresh basil</p>
-      <hr>
+          switch ($menuItem['specialCondition']) {
+            case ("New"):
+              $specialInfo = "<span class='w3-tag w3-grey w3-round'>New</span>";
+              break;
+            case ("Popular"):
+              $specialInfo = "<span class='w3-tag w3-grey w3-round'>Popular</span>";
+              break;
+            case ("Hot"):
+              $specialInfo = "<span class='w3-tag w3-red w3-round'>Hot!</span>";
+              break;
+            case ("Seasonal"):
+              $specialInfo = "<span class='w3-tag w3-grey w3-round'>Seasonal</span>";
+              break;
+            case (""):
+              $specialInfo = "";
+              break;
+          }
 
-      <h1><b>Meat Town</b> <span class="w3-tag w3-red w3-round">Hot!</span><span class="w3-right w3-tag w3-dark-grey w3-round">$20.00</span></h1>
-      <p class="w3-text-grey">Fresh tomatoes, mozzarella, hot pepporoni, hot sausage, beef, chicken</p>
-      <hr>
-
-      <h1><b>Parma</b> <span class="w3-tag w3-grey w3-round">New</span><span class="w3-right w3-tag w3-dark-grey w3-round">$21.50</span></h1>
-      <p class="w3-text-grey">Fresh tomatoes, mozzarella, parma, bacon, fresh arugula</p>
+          if ($menuItem['category'] == 'Pizza') {
+            echo "
+              <h1><b>{$menuItem['title']}</b> {$specialInfo} <span class='w3-right w3-tag w3-dark-grey w3-round'>£{$price}</span></h1>
+              <p class='w3-text-grey'>{$menuItem['description']}</p>
+            ";
+          }
+        }
+      ?>
     </div>
 
     <div id="Pasta" class="w3-container menu w3-padding-32 w3-white">
-      <h1><b>Lasagna</b> <span class="w3-tag w3-grey w3-round">Popular</span> <span class="w3-right w3-tag w3-dark-grey w3-round">$13.50</span></h1>
-      <p class="w3-text-grey">Special sauce, mozzarella, parmesan, ground beef</p>
-      <hr>
-   
-      <h1><b>Ravioli</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$14.50</span></h1>
-      <p class="w3-text-grey">Ravioli filled with cheese</p>
-      <hr>
-      
-      <h1><b>Spaghetti Classica</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$11.00</span></h1>
-      <p class="w3-text-grey">Fresh tomatoes, onions, ground beef</p>
-      <hr>
+      <?php
+        foreach ($menuItems as $menuItem) {
+          $price = number_format((float)$menuItem['price'], 2, '.', '');
 
-      <h1><b>Seafood pasta</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$25.50</span></h1>
-      <p class="w3-text-grey">Salmon, shrimp, lobster, garlic</p>
+          switch ($menuItem['specialCondition']) {
+            case ("New"):
+              $specialInfo = "<span class='w3-tag w3-grey w3-round'>New</span>";
+              break;
+            case ("Popular"):
+              $specialInfo = "<span class='w3-tag w3-grey w3-round'>Popular</span>";
+              break;
+            case ("Hot"):
+              $specialInfo = "<span class='w3-tag w3-red w3-round'>Hot!</span>";
+              break;
+            case ("Seasonal"):
+              $specialInfo = "<span class='w3-tag w3-grey w3-round'>Seasonal</span>";
+              break;
+            case (""):
+              $specialInfo = "";
+              break;
+          }
+
+          if ($menuItem['category'] == 'Salad') {
+            echo "
+              <h1><b>{$menuItem['title']}</b> {$specialInfo} <span class='w3-right w3-tag w3-dark-grey w3-round'>£{$price}</span></h1>
+              <p class='w3-text-grey'>{$menuItem['description']}</p>
+            ";
+          }
+        }
+      ?>
     </div>
 
 
     <div id="Starter" class="w3-container menu w3-padding-32 w3-white">
-      <h1><b>Today's Soup</b> <span class="w3-tag w3-grey w3-round">Seasonal</span><span class="w3-right w3-tag w3-dark-grey w3-round">$5.50</span></h1>
-      <p class="w3-text-grey">Ask the waiter</p>
-      <hr>
-   
-      <h1><b>Bruschetta</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$8.50</span></h1>
-      <p class="w3-text-grey">Bread with pesto, tomatoes, onion, garlic</p>
-      <hr>
-      
-      <h1><b>Garlic bread</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$9.50</span></h1>
-      <p class="w3-text-grey">Grilled ciabatta, garlic butter, onions</p>
-      <hr>
-      
-      <h1><b>Tomozzarella</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$10.50</span></h1>
-      <p class="w3-text-grey">Tomatoes and mozzarella</p>
+      <?php
+        foreach ($menuItems as $menuItem) {
+          $price = number_format((float)$menuItem['price'], 2, '.', '');
+
+          switch ($menuItem['specialCondition']) {
+            case ("New"):
+              $specialInfo = "<span class='w3-tag w3-grey w3-round'>New</span>";
+              break;
+            case ("Popular"):
+              $specialInfo = "<span class='w3-tag w3-grey w3-round'>Popular</span>";
+              break;
+            case ("Hot"):
+              $specialInfo = "<span class='w3-tag w3-red w3-round'>Hot!</span>";
+              break;
+            case ("Seasonal"):
+              $specialInfo = "<span class='w3-tag w3-grey w3-round'>Seasonal</span>";
+              break;
+            case (""):
+              $specialInfo = "";
+              break;
+          }
+
+          if ($menuItem['category'] == 'Starter') {
+            echo "
+              <h1><b>{$menuItem['title']}</b> {$specialInfo} <span class='w3-right w3-tag w3-dark-grey w3-round'>£{$price}</span></h1>
+              <p class='w3-text-grey'>{$menuItem['description']}</p>
+            ";
+          }
+        }
+      ?>
     </div><br>
 
   </div>
