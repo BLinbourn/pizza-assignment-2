@@ -1,16 +1,9 @@
 <?php
-    require_once '../functions/dbh-inc.php';
-    require_once '../functions/func-inc.php';
+    include_once 'dashboard_header.php';
+    include_once '../functions/dbh-inc.php';
+    include_once '../functions/func-inc.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Menu</title>
-</head>
-<body>
     <h3>Edit your menu here!</h3>
     <form action="../functions/menu-inc.php" method="post">
         <label>Category</label>
@@ -73,5 +66,8 @@
             }
         ?>
     </table>
-</body>
-</html>
+<?php
+
+include_once 'dashboard_footer.php';
+
+?>
