@@ -81,3 +81,41 @@ function createMenuItem($conn, $category, $title, $description, $price, $special
     header("location: ../pages/menu.php?error=none");
     exit();
 }
+
+function getAllContactInfo($conn) {
+    $sql = "SELECT * FROM CustomerMessages;";
+    $statement = mysqli_stmt_init($conn);
+
+    // Makes sure the statement got sent to the database
+    if (!mysqli_stmt_prepare($statement, $sql)) {
+        header("location: ../contacts.php?error=statmentfailed");
+        exit();
+    }
+
+    mysqli_stmt_execute($statement);
+
+    $resultData = mysqli_stmt_get_result($statement);
+
+    mysqli_fetch_all($resultData, MYSQLI_ASSOC);
+
+    mysqli_stmt_close($statement);
+
+    return $resultData;
+}
+
+function createContactMessage($conn, $name, $datetime, $nopeople, $message) {
+    $sql = "INSERT INTO CustomerMessages (name, datetime, nopeople, message) VALUES (?, ?, ?, ?);";
+    $statement = mysqli_stmt_init($conn);
+
+    // Makes sure the statement got sent to the database
+    if (!mysqli_stmt_prepare($statement, $sql)) {
+        header("location: ../login.php?error=statmentfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($statement, "ssds", $name, $nopeople, $datetime, $message);
+    mysqli_stmt_execute($statement);
+    mysqli_stmt_close($statement);
+    header("location: ../index.php?error=none");
+    exit();
+}

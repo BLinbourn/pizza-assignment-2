@@ -206,12 +206,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
     <p>Find us at some address at some place or call us at 05050515-122330</p>
     <p><span class="w3-tag">FYI!</span> We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste.</p>
     <p class="w3-xxlarge"><strong>Reserve</strong> a table, ask for today's special or just send us a message:</p>
-    <form action="/action_page.php" target="_blank">
+    <form action="functions/contact-inc.php" method="post">
       <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
       <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many people" required name="People"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time" required name="date" value="2020-11-16T20:00"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
-      <p><button class="w3-button w3-light-grey w3-block" type="submit">SEND MESSAGE</button></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time" required name="date" value="2025-06-21T20:00"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message \ Special requirements" name="Message"></p>
+      <p><button class="w3-button w3-light-grey w3-block" type="submit" name="customerMessage">SEND MESSAGE</button></p>
     </form>
   </div>
 </div>
