@@ -182,14 +182,42 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
     
     <div class="w3-row">
       <div class="w3-col s6">
-        <p>Mon & Tue CLOSED</p>
-        <p>Wednesday 10.00 - 24.00</p>
-        <p>Thursday 10:00 - 24:00</p>
+        <?php
+          $timeInfo = getAllTimeInfo($conn);
+
+            foreach ($timeInfo as $times) {
+              if ($times['day'] == 'Monday' || $times['day'] == 'Tuesday' || $times['day'] == 'Wednesday' || $times['day'] == 'Thrusday') {
+                if ($times['closed'] == 1) {
+                  echo "
+                    <p>{$times['day']}: <span>Closed</span></p>
+                  ";
+                } else {
+                  echo "
+                    <p>{$times['day']}: <span>{$times['openingtime']}</span> - <span>{$times['closingtime']}</span></p>
+                  ";
+                }
+              }
+            }
+        ?>
       </div>
       <div class="w3-col s6">
-        <p>Friday 10:00 - 12:00</p>
-        <p>Saturday 10:00 - 23:00</p>
-        <p>Sunday Closed</p>
+        <?php
+          $timeInfo = getAllTimeInfo($conn);
+
+            foreach ($timeInfo as $times) {
+              if ($times['day'] == 'Friday' || $times['day'] == 'Saturday' || $times['day'] == 'Sunday') {
+                if ($times['closed'] == 1) {
+                  echo "
+                    <p>{$times['day']}: <span>Closed</span></p>
+                  ";
+                } else {
+                  echo "
+                    <p>{$times['day']}: <span>{$times['openingtime']}</span> - <span>{$times['closingtime']}</span></p>
+                  ";
+                }
+              }
+            }
+        ?>
       </div>
     </div>
     

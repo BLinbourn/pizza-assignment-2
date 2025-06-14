@@ -119,3 +119,42 @@ function createContactMessage($conn, $name, $datetime, $nopeople, $message) {
     header("location: ../index.php?error=none");
     exit();
 }
+
+function getAllTimeInfo($conn) {
+    $sql = "SELECT * FROM OpeningTimes;";
+    $statement = mysqli_stmt_init($conn);
+
+    // Makes sure the statement got sent to the database
+    if (!mysqli_stmt_prepare($statement, $sql)) {
+        header("location: ../contacts.php?error=statmentfailed");
+        exit();
+    }
+
+    mysqli_stmt_execute($statement);
+
+    $resultData = mysqli_stmt_get_result($statement);
+
+    mysqli_fetch_all($resultData, MYSQLI_ASSOC);
+
+    mysqli_stmt_close($statement);
+
+    return $resultData;
+}
+
+function editTimeInfo($conn, $day, $openingtime, $closingtime, $closed) {
+    $sql = "UPDATE OpeningTimes SET openingtime = ?, closingtime = ?, closed = ? WHERE day = ?;";
+    $statement = mysqli_stmt_init($conn);
+
+    // Makes sure the statement got sent to the database
+    if (!mysqli_stmt_prepare($statement, $sql)) {
+        header("location: ../times.php?error=statmentfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($statement, "ssds", $openingtime, $closingtime, $closed, $day);
+    mysqli_stmt_execute($statement);
+    mysqli_stmt_close($statement);
+
+    header("location: ../pages/times.php?error=none");
+    exit();
+}
