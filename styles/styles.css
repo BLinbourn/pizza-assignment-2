@@ -1,0 +1,209 @@
+/* General Styling */
+
+body {
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+main {
+    padding-left: 30px;
+}
+
+h2 {
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+button {
+    padding: 8px 10px;
+    width: 130px;
+    background-color: #8DB1D6;
+    color: white;
+    border: 2px solid #CEE4FB;
+    font-size: 16px;
+    font-weight: 300;
+    border-radius: 50px;
+}
+
+input {
+    height: 25px;
+    width: 250px;
+    margin-bottom: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    width: 90%;
+}
+
+td, th {
+    border: solid white;
+    border-width: 2px 0px;
+    padding: 8px;
+}
+
+th {
+    background-color: #DEEDFC;
+    font-weight: 400;
+}
+
+table tr:nth-child(even){
+    background-color: #F6FAFE;
+}
+
+table tr:nth-child(odd){
+    background-color: #DEEDFC;
+}
+
+tr {
+    text-align: left;
+    font-weight: 700;
+}
+
+fieldset {
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-left: 0;
+}
+
+fieldset input {
+    width: 25px;
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+
+fieldset label {
+    margin-right: 20px;
+}
+
+/* Login Page */
+
+body#login {
+    background: #A2E1EB;
+    background: linear-gradient(45deg, rgba(162, 225, 235, 1) 0%, rgba(174, 211, 249, 1) 100%);    
+    text-align: center;
+}
+
+form#signin {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    align-content: center;
+    gap: 15px;
+}
+
+/* Dashbaord header */
+
+header {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    padding-left: 30px;
+    background-color: #AED3F9;
+}
+
+header h3 {
+    margin: 0;
+    align-self: center;
+}
+
+header nav {
+    margin: 0;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+}
+
+nav ul li {
+    background-color: #AED3F9;
+    cursor: pointer;
+    min-width: 150px;
+    min-height: 75px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li a {
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+nav ul li:hover,
+nav ul li.active {
+    background-color: #759BC4;
+    color: white;
+}
+
+nav ul li:hover > a,
+nav ul li.active a {
+    color: white;
+}
+
+/* Menu Items Page */
+
+form#menu {
+    display: none;
+    grid-template-columns: 200px 1fr;
+    border-radius: 16px;
+    width: 45%;
+    gap: 15px;
+    display: none;
+    align-content: center;
+    padding: 20px;
+    background: #A2E1EB;
+    background: linear-gradient(45deg, rgba(162, 225, 235, 1) 0%, rgba(174, 211, 249, 1) 100%);
+    margin-top: 20px;
+}
+
+#menu label {
+    font-weight: 700;
+    align-content: center;
+}
+
+/* Contact Page */
+
+/* Time Change Page */
+
+form#times {
+    grid-template-columns: 200px 1fr;
+    border-radius: 16px;
+    width: 40%;
+    gap: 15px;
+    display: none;
+    align-content: center;
+    padding: 20px;
+    background: #A2E1EB;
+    background: linear-gradient(45deg, rgba(162, 225, 235, 1) 0%, rgba(174, 211, 249, 1) 100%);
+    margin-top: 20px;
+}
+
+#times input {
+    margin-right: 30px;
+    margin-bottom: 0;
+}
+
+#times label {
+    font-weight: 700;
+}
+
+#times input#closed {
+    width: 25px;
+    height: 25px;
+    margin: 0;
+}
