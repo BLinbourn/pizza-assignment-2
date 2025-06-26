@@ -5,13 +5,16 @@
     include_once '../functions/func-inc.php';
 
 ?>
+<main>
 
-    <table>
+    <h2>Booking Requests</h2>
+
+    <table id="messages">
         <tr>
-            <td>Name</td>
-            <td>Number of People</td>
-            <td>Date and Time</td>
-            <td>Message</td>
+            <th>Name</th>
+            <th>Number of People</th>
+            <th>Date and Time</th>
+            <th>Message</th>
         </tr>
         <?php
             $contactInfo = getAllContactInfo($conn);
@@ -21,17 +24,20 @@
                 $datetime = strtotime($contacts['datetime']);
                 $datetime = date('d.m.Y H:i', $datetime);
 
+                $name = htmlspecialchars($contacts['name']);
+                $message = htmlspecialchars($contacts['message']);
                 echo "
                 <tr>
-                    <td>{$contacts['name']}</td>
+                    <td>{$name}</td>
                     <td>{$contacts['nopeople']}</td>
                     <td>{$datetime}</td>
-                    <td>{$contacts['message']}</td>
+                    <td>{$message}</td>
                 </tr>
                 ";
             }
         ?>
     </table>
+</main>
 
 <?php
 
