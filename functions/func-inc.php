@@ -82,6 +82,24 @@ function createMenuItem($conn, $category, $title, $description, $price, $special
     exit();
 }
 
+function editMenuItem($conn, $category, $title, $description, $price, $specialCondition) {
+    $sql = "UPDATE MenuItems SET category = ?, description = ?, price = ?, specialCondition = ? WHERE title = ?;";
+    $statement = mysqli_stmt_init($conn);
+
+    // Makes sure the statement got sent to the database
+    if (!mysqli_stmt_prepare($statement, $sql)) {
+        header("location: ../menu.php?error=statmentfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($statement, "ssdss", $category, $description, $price, $specialCondition, $title);
+    mysqli_stmt_execute($statement);
+    mysqli_stmt_close($statement);
+
+    header("location: ../pages/menu.php?error=none");
+    exit();
+}
+
 function getAllContactInfo($conn) {
     $sql = "SELECT * FROM CustomerMessages;";
     $statement = mysqli_stmt_init($conn);
