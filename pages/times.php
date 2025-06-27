@@ -5,7 +5,7 @@
     include_once '../functions/func-inc.php';
 
 ?>
-<main>
+<main id="timeMain">
     <form id="times" action="../functions/times-inc.php" method="post">
         <label for="day">Day</label>
         <input type="text" id="day" name="day" readonly>

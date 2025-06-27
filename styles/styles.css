@@ -176,6 +176,10 @@ form#menu {
     align-content: center;
 }
 
+button[name="updateMenuItem"] {
+    display: none;
+}
+
 /* Contact Page */
 
 /* Time Change Page */

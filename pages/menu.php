@@ -35,6 +35,7 @@
             <label for="new">New</label>
         </fieldset>
         <button type="submit" name="addMenuItem">Add Item</button>
+        <button type="submit" name="updateMenuItem">Update Item</button>
     </form>
 
     <?php
@@ -54,19 +55,25 @@
             <th>Description</th>
             <th>Price</th>
             <th>Special Condition</th>
+            <th></th>
         </tr>
         <?php
             $menuItems = getAllMenuItems($conn);
             foreach ($menuItems as $menuItem) {
                 $price = number_format((float)$menuItem['price'], 2, '.', '');
+                $title = $menuItem['title'];
+                $description = $menuItem['description'];
+                $category = $menuItem['category'];
+                $specialCondition = $menuItem['specialCondition'];
 
                 echo "
                 <tr>
-                    <td>{$menuItem['category']}</td>
-                    <td>{$menuItem['title']}</td>
-                    <td>{$menuItem['description']}</td>
+                    <td>{$category}</td>
+                    <td>{$title}</td>
+                    <td>{$description}</td>
                     <td>{$price}</td>
-                    <td>{$menuItem['specialCondition']}</td>
+                    <td>{$specialCondition}</td>
+                    <td><button name='editMenuItems' onclick='editMenu(\"$title\", \"$description\", \"$price\", \"$category\", \"$specialCondition\")'>Edit</button></td>
                 </tr>
                 ";
             }
